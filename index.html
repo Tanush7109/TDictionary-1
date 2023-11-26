@@ -61,6 +61,22 @@
                 opacity: 1;
             }
         }
+        @keyframes appear{
+            0%{
+                opacity: 0;
+            }
+            100%{
+                opacity: 1;
+            }
+        }
+        @keyframes appear2{
+            0%{
+                opacity: 0;
+            }
+            100%{
+                opacity: 1;
+            }
+        }
         .wordbox{
             transition: 0.5s ease;
             animation-name: slidedown;
@@ -106,12 +122,12 @@
             transition: 0.5s ease;
         }
         .animated{
-            animation-name: slidedown;
+            animation-name: appear;
             animation-duration: 0.7s;
             transition: 0.5s ease;
         }
         .animated2{
-            animation-name: slidedown2;
+            animation-name: appear2;
             animation-duration: 0.9s;
             transition: 0.5s ease;
         }
@@ -198,7 +214,7 @@
 
             })
             let h3 = document.querySelector('.subject');
-            h3.setAttribute("class", "text-light mt-5 pt-5 d-inline subject animated");
+            h3.setAttribute("class", "text-light mt-5 pt-5 d-inline subject animated2");
         }
 
 
