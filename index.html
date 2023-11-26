@@ -1,0 +1,207 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tdictionary</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    .result{
+        margin-top: 160px;
+    }
+</style>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li id="logo">TDictionary - Made by Tanush P</li>
+        </ul>
+    </nav>
+    <div class="container">
+        <input type="search" placeholder="Search a word" id="word">
+        <button id="get-meaning">Get meaning</button>
+    </div>
+    <div class="result">
+        <h1>Meaning: </h1><h1 id="meaning"></h1>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>
+ -->
+
+ <!doctype html>
+ <html lang="en">
+   <head>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <title>TDictionary</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+     <style>
+
+        html, body{
+            background: rgb(20,20,24);
+        }
+        @keyframes slidedown{
+            0%{
+                transform: translateY(-150px);
+                opacity: 0;
+            }
+            100%{
+                transform: translateY(0px);
+                opacity: 1;
+            }
+        }
+        @keyframes slidedown2{
+            0%{
+                transform: translateY(-200px);
+                opacity: 0;
+            }
+            100%{
+                transform: translateY(0px);
+                opacity: 1;
+            }
+        }
+        .wordbox{
+            transition: 0.5s ease;
+            animation-name: slidedown;
+            animation-duration: 0.7s;
+            background: transparent;
+            border: 2px solid white;
+        }
+        .wordbox:focus{
+            background: transparent;
+            border: 2px solid white;
+        }
+        .navitem{
+            display: inline-block;
+            list-style: none;
+            transition: 0.5s ease;
+        }
+        .navitem a{
+            color: white;
+            text-decoration: none;
+        }
+        .navitem:hover{
+            background: white;
+            transform: translateY(-20px);
+        }
+        .navitem:hover a{
+            color: black;
+        }
+        .navitem.activated{
+            background: white;
+            transform: translateY(-20px);
+        }
+        .navitem.activated a{
+            color: black;
+        }
+        .mybutton{
+            animation-name: slidedown;
+            animation-duration: 0.8s;
+            transition: 0.5s ease;
+        }
+        .lbl{
+            animation-name: slidedown;
+            animation-duration: 0.9s;
+            transition: 0.5s ease;
+        }
+        .animated{
+            animation-name: slidedown;
+            animation-duration: 0.7s;
+            transition: 0.5s ease;
+        }
+        .animated2{
+            animation-name: slidedown2;
+            animation-duration: 0.9s;
+            transition: 0.5s ease;
+        }
+     </style>
+   </head>
+   <body>
+
+    <nav class="mynav p-4 d-flex align-items-center" style="height: 20vh;">
+        <ul>
+            <li class="navitem px-4 py-3 notactivated" id="navitem1" onclick="home()">
+                <a href="index.html">Home</a>
+            </li>
+            <li class="navitem px-4 py-3 notactivated" id="navitem2" onclick="about()">
+                <a href="about.html">About</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="form-group text-center">
+        <label for="word" class="text-light mb-4 lbl">Enter the word you want to get the meaning of</label>
+        <input type="text" class="form-control text-center d-block mx-auto w-25 wordbox text-light" id="word">
+        <button class="btn btn-danger mb-5 mt-2" onclick="Clear()">Clear</button>
+
+        <button class="btn btn-dark d-block mx-auto my-4 mybutton" onclick="createMeaning();">Get meaning</button>
+    </div>
+    <div class="container text-center mt-5 pt-5">
+        <h3 class="text-light mt-5 pt-5 d-none subject">Meaning</h3>
+        <p class="text-light pt-3 d-none word-meaning fs-4"></p>
+    </div>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+     <script src="script.js"></script>
+     <script>
+        function Clear(){
+            let wordbox = document.getElementById('word');
+            wordbox.value = "";
+        }
+        function home(){
+            let about = document.querySelector('#navitem2');
+            let home = document.querySelector('#navitem1');
+            about.classList.replace('activated', 'notactivated');
+            home.classList.replace('notactivated', 'activated');
+            window.location.href = "https://tanushisthebest7109.github.io/TDictionary/";
+        }
+        function about(){
+            let about = document.querySelector('#navitem2');
+            let home = document.querySelector('#navitem1');
+            home.classList.replace('activated', 'notactivated');
+            about.classList.replace('notactivated', 'activated');
+            window.location.href = "https://tanushisthebest7109.github.io/TDictionary/about";
+
+        }
+
+
+
+
+
+
+        function createMeaning(){
+            fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word.value}`)
+            .then(response =>{ 
+                if (!response.ok){
+                    
+                let h4 = document.querySelector('.word-meaning');
+                h4.innerText = "Meaning not found. You might have misspelled the word. Please try again!";
+                h4.classList.remove("d-none")
+                h4.classList.add("d-block", "animated2");
+                h4.addEventListener("animationend", ()=>{
+                    h4.classList.remove("animated2");
+                })
+                }
+                return response.json();
+            })
+            .then(data =>{
+                
+                meaning = (data[0].meanings[0].definitions[0].definition);
+
+                let h4 = document.querySelector('.word-meaning');
+                h4.innerText = meaning;
+                h4.classList.remove("d-none")
+                h4.classList.add("d-block", "animated2");
+                h4.addEventListener("animationend", ()=>{
+                    h4.classList.remove("animated2");
+                })
+
+
+            })
+            let h3 = document.querySelector('.subject');
+            h3.setAttribute("class", "text-light mt-5 pt-5 d-inline subject animated");
+        }
+
+
+     </script>
+   </body>
+ </html>

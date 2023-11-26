@@ -1,0 +1,139 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tdictionary</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    .result{
+        margin-top: 160px;
+    }
+</style>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li id="logo">TDictionary - Made by Tanush P</li>
+        </ul>
+    </nav>
+    <div class="container">
+        <input type="search" placeholder="Search a word" id="word">
+        <button id="get-meaning">Get meaning</button>
+    </div>
+    <div class="result">
+        <h1>Meaning: </h1><h1 id="meaning"></h1>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>
+ -->
+
+ <!doctype html>
+ <html lang="en">
+   <head>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <title>TDictionary</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+     <style>
+
+        html, body{
+            background: rgb(20,20,24);
+        }
+        @keyframes slidedown{
+            0%{
+                transform: translateY(-150px);
+                opacity: 0;
+            }
+            100%{
+                transform: translateY(0px);
+                opacity: 1;
+            }
+        }
+        @keyframes slidedown2{
+            0%{
+                transform: translateY(-200px);
+                opacity: 0;
+            }
+            100%{
+                transform: translateY(0px);
+                opacity: 1;
+            }
+        }
+        .wordbox{
+            transition: 0.5s ease;
+            animation-name: slidedown;
+            animation-duration: 0.7s;
+            background: transparent;
+            border: 2px solid white;
+        }
+        .wordbox:focus{
+            background: transparent;
+            border: 2px solid white;
+        }
+        .navitem{
+            display: inline-block;
+            list-style: none;
+            transition: 0.5s ease;
+        }
+        .navitem a{
+            color: white;
+            text-decoration: none;
+        }
+        .navitem:hover{
+            background: white;
+            transform: translateY(-20px);
+        }
+        .navitem:hover a{
+            color: black;
+        }
+        .navitem.activated{
+            background: white;
+            transform: translateY(-20px);
+        }
+        .navitem.activated a{
+            color: black;
+        }
+        .mybutton{
+            animation-name: slidedown;
+            animation-duration: 0.8s;
+            transition: 0.5s ease;
+        }
+        .lbl{
+            animation-name: slidedown;
+            animation-duration: 0.9s;
+            transition: 0.5s ease;
+        }
+        .animated{
+            animation-name: slidedown;
+            animation-duration: 0.7s;
+            transition: 0.5s ease;
+        }
+        .animated2{
+            animation-name: slidedown2;
+            animation-duration: 0.9s;
+            transition: 0.5s ease;
+        }
+     </style>
+   </head>
+   <body>
+
+    <nav class="mynav p-4 d-flex align-items-center" style="height: 20vh;">
+        <ul>
+            <li class="navitem px-4 py-3 notactivated" id="navitem1" onclick="home()">
+                <a href="index.html">Home</a>
+            </li>
+            <li class="navitem px-4 py-3 notactivated" id="navitem2" onclick="about()">
+                <a href="about.html">About</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="container text-light">
+        <h1 class="animated">About me</h1>
+        <p class="animated2">I am Tanush p and I study in class 7. I made this dictionary app for no reason. I was bored, so to pass time I made this.</p>
+    </div>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+   </body>
+ </html>
