@@ -61,22 +61,6 @@
                 opacity: 1;
             }
         }
-        @keyframes appear{
-            0%{
-                opacity: 0;
-            }
-            100%{
-                opacity: 1;
-            }
-        }
-        @keyframes appear2{
-            0%{
-                opacity: 0;
-            }
-            100%{
-                opacity: 1;
-            }
-        }
         .wordbox{
             transition: 0.5s ease;
             animation-name: slidedown;
@@ -122,12 +106,12 @@
             transition: 0.5s ease;
         }
         .animated{
-            animation-name: appear;
+            animation-name: slidedown;
             animation-duration: 0.7s;
             transition: 0.5s ease;
         }
         .animated2{
-            animation-name: appear2;
+            animation-name: slidedown2;
             animation-duration: 0.9s;
             transition: 0.5s ease;
         }
@@ -206,7 +190,7 @@
                 let h4 = document.querySelector('.word-meaning');
                 h4.innerText = meaning;
                 h4.classList.remove("d-none")
-                h4.classList.add("d-block", "animated2");
+                h4.classList.add("d-inline", "animated2");
                 h4.addEventListener("animationend", ()=>{
                     h4.classList.remove("animated2");
                 })
