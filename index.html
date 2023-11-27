@@ -129,14 +129,16 @@
             </li>
         </ul>
     </nav>
-    <div class="form-group text-center">
+    <div class="form-group" style="position: absolute; top: 200px; left:200px; background: rgb(48, 48, 48); padding: 25px; border-radius: 10px;">
         <label for="word" class="text-light mb-4 lbl">Enter the word you want to get the meaning of</label>
-        <input type="text" class="form-control text-center d-block mx-auto w-25 wordbox text-light" id="word">
+        <input type="text" class="form-control text-center w-25 wordbox text-light" id="word">
         <button class="btn btn-danger mb-5 mt-2" onclick="Clear()">Clear</button>
 
-        <button class="btn btn-dark d-block mx-auto my-4 mybutton" onclick="createMeaning();">Get meaning</button>
+        <button class="btn btn-dark d-block my-4 mybutton" onclick="createMeaning();">Get meaning</button>
     </div>
-    <div class="container text-center mt-5 pt-5">
+    <h5 class="text-light" style="position: absolute; top: 200px; right:200px;">The meaning will be displayed here.</h5>
+
+    <div class="container mt-5 pt-5"  style="position: absolute; top: 200px; right: 210px; width: 18rem; background: rgb(48, 48, 48);padding: 25px; border-radius: 10px;" id="meaningContainer">
         <h3 class="text-light mt-5 pt-5 d-none subject">Meaning</h3>
         <p class="text-light pt-3 d-none word-meaning fs-4"></p>
     </div>
@@ -174,9 +176,9 @@
                 if (!response.ok){
                     
                 let h4 = document.querySelector('.word-meaning');
-                h4.innerText = "Meaning not found. You might have misspelled the word. Please try again";
+                h4.innerText = "Meaning not found. You might have misspelled the word. Please try again!";
                 h4.classList.remove("d-none")
-                h4.classList.add("d-inline", "animated2");
+                h4.classList.add("d-block", "animated2");
                 h4.addEventListener("animationend", ()=>{
                     h4.classList.remove("animated2");
                 })
@@ -190,10 +192,11 @@
                 let h4 = document.querySelector('.word-meaning');
                 h4.innerText = meaning;
                 h4.classList.remove("d-none")
-                h4.classList.add("d-inline", "animated2");
+                h4.classList.add("d-block", "animated2");
                 h4.addEventListener("animationend", ()=>{
                     h4.classList.remove("animated2");
                 })
+
 
 
             })
